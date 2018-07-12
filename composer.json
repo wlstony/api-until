@@ -1,0 +1,33 @@
+{
+    "name": "once-api",
+    "description": "The Once Api Framework.",
+    "keywords": ["framework", "once", "restful"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/lumen-framework": "5.1.*",
+        "vlucas/phpdotenv": "~1.0",
+        "peekmo/jsonpath": "dev-master",
+        "nikic/fast-route": "0.4.*",
+        "phpdocumentor/reflection-docblock": "3.2.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "phpunit/phpunit": "~5.0",
+        "mockery/mockery": "~0.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Once\\": "src/"
+        },
+        "files": [
+            "src/Orm/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    }
+}
