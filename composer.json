@@ -12,5 +12,10 @@
             "email": "wulinsheng7015@126.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+          "Docmk\\":"src/"
+        }
+    }
     "minimum-stability": "dev"
 }

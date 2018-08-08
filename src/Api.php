@@ -1,10 +1,10 @@
 <?php
-namespace Docmk
+namespace Docmk;
 
 class Api
 {
-    function loadRoutesFromDir() {
-
+    function loadRoutesFromDir($dir) {
+        error_log('dir: ' . $dir);
     }
 
     function loadRoutesFromClass() {
