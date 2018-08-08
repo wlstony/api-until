@@ -1,5 +1,5 @@
 <?php
-namespace Docmk\handlers
+namespace Docmk\handlers;
 
 class BaseHandler
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Docmk\handlers\controller
+namespace Docmk\handlers\controller;
 
 class ReturnHandler
 {
