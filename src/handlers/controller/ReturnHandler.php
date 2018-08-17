@@ -1,7 +1,11 @@
 <?php
 namespace Docmk\handlers\controller;
 
-class ReturnHandler
+use Docmk\handlers\BaseHandler;
+
+class ReturnHandler extends BaseHandler
 {
-    
+    function handle() {
+        
+    }
 }

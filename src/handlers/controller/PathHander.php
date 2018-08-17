@@ -1,7 +1,13 @@
 <?php
 namespace Docmk\handlers\controller;
 
-class PathHander
+use Docmk\handlers\BaseHandler;
+
+class PathHander extends BaseHandler
 {
+
+    public function handle() {
+        
+    }
     
 }
