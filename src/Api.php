@@ -44,6 +44,8 @@ class Api
                 echo "{$fullPath} 非php文件,不能加载route";
             }
         }
+
+        return $routes;
     }
 
     /**
@@ -59,7 +61,7 @@ class Api
                 $handler->handle();
             }
         });
-error_log('$controller: ' . print_r($controller, true));
+
         return $controller;
     }
 }

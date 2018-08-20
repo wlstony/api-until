@@ -11,8 +11,8 @@ class RouteHandler extends BaseHandler
 
         $method = $params[0];//未验证方法是否是允许的方法
         $uri = $params[1];
-
-        $route = new Route();
+        
+        $route = new Route($this->_controller->getClass(), $this->_action);
         $route->setUri($uri);
         $route->setMethod($method);
 

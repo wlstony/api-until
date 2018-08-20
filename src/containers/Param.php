@@ -24,17 +24,31 @@ class Param
     function setType($type) {
         $this->_type = $type;
     }
+    function getType() {
+        return $this->_type;
+    }
 
     function setDescription($description) {
         $this->_description = $description;
     }
 
+    function getDescription() {
+        return $this->_description;
+    }
+
     function setDefault($default) {
         $this->_default = $default;
+    }
+    function getDefault() {
+        return $this->_default;
     }
 
     function setRequired($required) {
         $this->_required = $required != false ? true : false;
+    }
+
+    function getRequired() {
+        return $this->_required;
     }
 
     function setValidation($validation) {

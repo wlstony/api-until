@@ -10,21 +10,21 @@ class DocVisitor
     const TYPE_CLASS = 'class';
 
 
-    function visitDoc($class, $callable) {
+    static function visitDoc($class, $callable) {
         //class
         $reflection = new \ReflectionClass($class);
         $comment = $reflection->getDocComment();
         if (! $comment) {
-            echo "{$class} comment not exist!";
+            // echo "{$class} comment not exist!";
             return false;
         }
         $factory  = DocBlockFactory::createInstance();
         $docblock = $factory->create($comment);
 
-        $summary = $docblock->getSummary();
-        $description = $docblock->getDescription();
-
         $tags = $docblock->getTags();
+        foreach ($tags as $tag) {
+            $callable(self::TYPE_CLASS, '', $tag->getName(), strval($tag));
+        }
 
         //method
         $methods = $reflection->getMethods();
@@ -45,7 +45,6 @@ class DocVisitor
                 foreach ($tags as $tag) {
                     $callable(self::TYPE_METHOD, $method->getName(), $tag->getName(), strval($tag));
                 }
-                die;
             }
         }
 
