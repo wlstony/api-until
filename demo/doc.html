@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>享换机文档系统</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.css" rel="stylesheet"></link>
+
+
+<script type="text/javascript" src="/dist/js/jquery-1.9.1.min.js"></script>
+<script src="/dist/js/jquery-ui.js "></script>
+<script src="/dist/js/jquery-ui.custom.js "></script>
+<script src="/dist/js/jquery.tocify.min.js"></script>
+<script src="/dist/js/prettify.js"></script>
+<script src="/dist/js/bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/dist/css/bootstrap-2.3.1.css" />
+<link rel="stylesheet" type="text/css" href="/dist/css/jquery.tocify.css" />
+<link rel="stylesheet" type="text/css" href="/dist/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/dist/css/prettify.css" />
+
+<style>
+body {
+    padding-top: 20px;
+}
+p {
+    font-size: 16px;
+}
+.headerDoc {
+    color: #005580;
+}
+@media (max-width: 767px) {
+    #toc {
+        position: relative;
+        width: 100%;
+        margin: 0px 0px 20px 0px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div id="toc">
+            </div>
+        </div>
+
+        <div class="span9">
+            <div id="doc" class="markdown-body">
+            </div>
+        </div>
+    </div> <!--/.row-fluid-->
+</div><!--/.fluid-container-->
+<script>
+    $(function() {
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: "/doc/index",
+            data: {
+                // _csrf: "<?=\Yii::$app->request->getCsrfToken(); ?>"
+            },
+            success: function(res) {
+                $("#doc").html(res);
+
+                var toc = $("#toc").tocify({
+                    selectors: "h2,h3,h4,h5"
+                }).data("toc-tocify");
+
+                prettyPrint();
+                $(".optionName").popover({ trigger: "hover" });
+            },
+            error: function(request) {
+            },
+        });
+    });
+</script>
+
+  </body>
+</html>
