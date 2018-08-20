@@ -2,7 +2,7 @@
 namespace Docmk\handlers\controller;
 
 use Docmk\handlers\BaseHandler;
-use Docmk\containers\Route;
+use Docmk\containers\RouteContainner;
 
 class RouteHandler extends BaseHandler
 {
@@ -12,7 +12,7 @@ class RouteHandler extends BaseHandler
         $method = $params[0];//未验证方法是否是允许的方法
         $uri = $params[1];
         
-        $route = new Route($this->_controller->getClass(), $this->_action);
+        $route = new RouteContainner($this->_controller->getClass(), $this->_action);
         $route->setUri($uri);
         $route->setMethod($method);
 

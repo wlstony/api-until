@@ -1,7 +1,7 @@
 <?php
 namespace Docmk\containers;
 
-class Param
+class ParamContainner
 {
     private $_name;
     private $_type;

@@ -3,8 +3,7 @@ namespace Docmk\containers;
 
 use phpDocumentor\Reflection\DocBlockFactory;
 
-
-class Route
+class RouteContainner
 {
     private $_uri;
     private $_method;
@@ -58,6 +57,13 @@ class Route
 
     function getSummary() {
         return $this->_summary . $this->_description;
+    }
+
+    function addReturn($return) {
+        $this->_return[] = $return;
+    }
+    function getReturn() {
+        return $this->_return;
     }
 
 }

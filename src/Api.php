@@ -2,7 +2,7 @@
 namespace Docmk;
 
 
-use Docmk\containers\Controller;
+use Docmk\containers\ControllerContainner;
 use Docmk\utils\DocVisitor;
 use Docmk\handlers\HanderFactory;
 
@@ -53,7 +53,7 @@ class Api
     * @param $class string controller的类名称
     */
     function loadRoutesFromClass($class) {
-        $controller = new Controller($class);
+        $controller = new ControllerContainner($class);
 
         DocVisitor::visitDoc($class, function($type, $action, $tag, $desc) use($controller) {
             $handler = HanderFactory::getHandler('controller', $tag, $desc, $controller, $action);

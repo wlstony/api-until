@@ -36,14 +36,41 @@ class DocMaker
 
     function makeResponse($controller, $route) {
         $doc = "\n\n** 响应: ** \n\n";
-        $doc .= '| 状态码 |  数据格式 | 数据demo | 描述 |';
+        $doc .= '| 状态码 |  数据格式 | 描述 | demo |';
         $doc .= "\n";
-        $doc .= '| :------- | :-------: | :-------: | -------: |';
+        $doc .= '| :------- | :-------: | :-------: | :------- |';
         
-        error_log('route: ' . print_r($route, true));
+        $returns = $route->getReturn();
+        if ($returns) {
+            foreach ($returns as $return) {
+                $status = $return->getStatus();
+                $description = $return->getDescription();
+                $datatype = trim($return->getDatatype(), '\\'); //php doc底层json，view关键词会带上\
+                $demo = $return->getDemo();
+                if ($datatype == 'json') {
+                    $demo = $this->oneLinePrettyJson($demo);
+                }
+
+                $doc .= "\n| {$status} | {$datatype} | {$description} | {$demo} |";
+            }
+        }
 
         $doc .= "\n\n";
 
         return $doc;
+    }
+
+    function oneLinePrettyJson($json) {
+        if (! $json && json_decode($json) == false) {
+            return $json;
+        }
+
+        $json = str_replace("\r\n", '<br>', $json);
+        $json = str_replace("\n", '<br>', $json);
+        $json = str_replace("\r", '<br>', $json);
+        $json = str_replace(' ', '&nbsp;', $json);
+        $json = str_replace('"', '&quot;', $json);
+
+        return $json;
     }
 }

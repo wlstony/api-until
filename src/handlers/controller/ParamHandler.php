@@ -2,7 +2,7 @@
 namespace Docmk\handlers\controller;
 
 use Docmk\handlers\BaseHandler;
-use Docmk\containers\Param;
+use Docmk\containers\ParamContainner;
 
 class ParamHandler extends BaseHandler
 {
@@ -13,7 +13,7 @@ class ParamHandler extends BaseHandler
 
         $route = $this->_controller->getRoute($action);
 
-        $param = new Param();
+        $param = new ParamContainner();
         //$开头的为参数名称
         if (strpos($splitedStrings[0], '$') === 0) {
             $param->setName(substr($splitedStrings[0], 1));

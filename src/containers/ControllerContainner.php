@@ -1,11 +1,11 @@
 <?php
 namespace Docmk\containers;
 
-use Docmk\containers\Route;
+use Docmk\containers\RouteContainner;
 use phpDocumentor\Reflection\DocBlockFactory;
 
 
-class Controller
+class ControllerContainner
 {
     private $_class;
     private $_path;
@@ -51,7 +51,7 @@ class Controller
         return $this->_summary;
     }
 
-    function addRoutes($action, Route $route) {
+    function addRoutes($action, RouteContainner $route) {
         if (! isset($this->_routes[$action])) {
             return $this->_routes[$action] = $route;
         }
